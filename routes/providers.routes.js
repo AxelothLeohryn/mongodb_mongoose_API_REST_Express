@@ -6,10 +6,10 @@ const providersController = require("../controllers/providers.controller.js");
 router.get("/", providersController.getProviders);
 //CREATE
 router.post("/", providersController.createProvider);
-// //UPDATE
-// router.put("/", providersController.updateProvider);
-// //DELETE
-// router.delete("/", providersController.deleteProvider);
+//UPDATE
+router.put("/:id", providersController.updateProvider);
+//DELETE
+router.delete("/:id", providersController.deleteProvider);
 
 module.exports = {
   router,

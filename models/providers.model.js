@@ -26,17 +26,27 @@ async function createProvider(providerData) {
   });
 }
 
-// async function updateProvider() {
+async function updateProvider(id, updates) {
+  //https://mongoosejs.com/docs/api/model.html#Model.findByIdAndUpdate()
+  const updatedProvider = await model.Provider.findByIdAndUpdate(id, updates, {
+    new: true,
+  });
+  return updatedProvider;
+}
 
-// }
+async function deleteProvider(company_name) {
+  await model.Provider.findOneAndDelete({company_name});
+}
 
-// async function deleteProvider() {
-
-// }
+async function findProvider(id) {
+  const provider = await model.Provider.findById(id);
+  return provider;
+}
 
 module.exports = {
   getProviders,
   createProvider,
-  //   updateProvider,
-  //   deleteProvider,
+  updateProvider,
+  deleteProvider,
+  findProvider
 };
